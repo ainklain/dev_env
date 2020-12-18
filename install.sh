@@ -75,7 +75,7 @@ find ~/ -maxdepth 1 -name .vimrc -exec rm {} \;
 find ~/ -maxdepth 1 -name .tmux.conf -exec rm {} \;
 find ~/.config/nvim/ -maxdepth 1 -name init.vim -exec rm {} \;
 
-git clone --bare https://github.com/ainklain/dev_environment $HOME/Dotfiles
+git clone --bare https://github.com/ainklain/dotfiles $HOME/Dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
 dotfiles checkout
 
