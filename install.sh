@@ -16,17 +16,17 @@ touch ~/log.log
 echo "install tools ..." >> ~/log.log
 
 sudo apt update
-sudo apt install -y sudo git zip unzip zsh python3-pip tmux 
+sudo apt install -y -qq sudo git zip unzip zsh python3-pip tmux 
 python3 -m pip install --upgrade pip
 
 echo "install tools done" >> ~/log.log
-
+echo "install tools done"  
 ##############################
 # install zsh
 ##############################
 echo "install zsh ..." >> ~/log.log
 # chsh -s /usr/bin/zsh
-zsh 
+# zsh 
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 echo "install zsh [oh-my-zsh done]" >> ~/log.log
@@ -42,6 +42,8 @@ source ~/path/to/fsh/fast-syntax-highlighting.plugin.zsh
 echo "install zsh [fast-syntax-highlighting]" >> ~/log.log
 
 echo "install zsh done" >> ~/log.log
+echo "install zsh done" 
+
 ##############################
 # install neovim
 ##############################
@@ -49,12 +51,12 @@ echo "install neovim .." >> ~/log.log
 # neovim
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
-sudo apt-get install neovim
-sudo apt install python3-neovim
+# sudo apt-get install -y neovim
+sudo apt install -y -qq python3-neovim
 
 # nodejs
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt-get install -y -qq nodejs
 echo "install neovim[nodejs done]" >> ~/log.log
 
 # coc.nvim
@@ -94,6 +96,7 @@ find ~/ -maxdepth 1 -name .tmux.conf -exec rm {} \;
 find ~/.config/nvim/ -maxdepth 1 -name init.vim -exec rm {} \;
 echo "update dotfiles[prev dotfiles removed]" >> ~/log.log
 
+sudo rm -r $HOME/Dotfiles
 git clone --bare https://github.com/ainklain/dev_environment $HOME/Dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
 dotfiles checkout
