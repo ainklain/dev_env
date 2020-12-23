@@ -88,19 +88,19 @@ echo "install docker done" >> ~/log.log
 
 echo "update dotfiles" >> ~/log.log
 
-# remove previous
-find ~/ -maxdepth 1 -name .bashrc -exec rm {} \;
-find ~/ -maxdepth 1 -name .zshrc -exec rm {} \;
-find ~/ -maxdepth 1 -name .vimrc -exec rm {} \;
-find ~/ -maxdepth 1 -name .tmux.conf -exec rm {} \;
-find ~/.config/nvim/ -maxdepth 1 -name init.vim -exec rm {} \;
-echo "update dotfiles[prev dotfiles removed]" >> ~/log.log
+# # remove previous
+# find ~/ -maxdepth 1 -name .bashrc -exec rm {} \;
+# find ~/ -maxdepth 1 -name .zshrc -exec rm {} \;
+#find ~/ -maxdepth 1 -name .vimrc -exec rm {} \;
+#find ~/ -maxdepth 1 -name .tmux.conf -exec rm {} \;
+#find ~/.config/nvim/ -maxdepth 1 -name init.vim -exec rm {} \;
+#echo "update dotfiles[prev dotfiles removed]" >> ~/log.log
 
-sudo rm -r ~/Dotfiles
-git clone --bare https://github.com/ainklain/dev_environment ~/Dotfiles
-alias dotfiles='/usr/bin/git --git-dir=~/Dotfiles --work-tree=~'
-dotfiles checkout
-echo "update dotfiles done" >> ~/log.log
+#sudo rm -r #HOME/Dotfiles
+#git clone --bare https://github.com/ainklain/dev_environment $HOME/Dotfiles
+#alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
+#dotfiles checkout
+#echo "update dotfiles done" >> ~/log.log
 
 echo "all done" >> ~/log.log
 
