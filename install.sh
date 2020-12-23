@@ -16,7 +16,7 @@ touch ~/log.log
 echo "install tools ..." >> ~/log.log
 
 sudo apt update
-sudo apt install -y -qq sudo git zip unzip zsh python3-pip tmux 
+sudo apt install -y -qq sudo curl git zip unzip zsh python3-pip tmux 
 python3 -m pip install --upgrade pip
 
 echo "install tools done" >> ~/log.log
