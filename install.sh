@@ -16,7 +16,7 @@ touch ~/log.log
 echo "install tools ..." >> ~/log.log
 
 sudo apt update
-sudo apt install -y -qq sudo curl git zip unzip zsh python3-pip tmux 
+sudo apt install -y -qq sudo curl git zip unzip zsh python3-pip tmux language-pack-en
 python3 -m pip install --upgrade pip
 
 echo "install tools done" >> ~/log.log
@@ -30,6 +30,19 @@ echo "install zsh ..." >> ~/log.log
 # oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 echo "install zsh [oh-my-zsh done]" >> ~/log.log
+
+# locale
+sudo update-locale
+
+# font - powerline
+sudo mkdir $HOME/agnoster_theme
+cd $HOME/agnoster_theme
+sudo git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts
+sh ./install.sh
+cd ..
+rm -rf fonts
+
 
 # zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
