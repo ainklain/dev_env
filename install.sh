@@ -89,18 +89,43 @@ echo "install docker done" >> ~/log.log
 echo "update dotfiles" >> ~/log.log
 
 # # remove previous
+
+sudo mkdir $HOME/backup_dots
+if [ -e $HOME/.bashrc ]; then
+	sudo mv $HOME/.bashrc $HOME/backup_dots/.bashrc
+	echo "found and moved .bashrc to backup_dots/"
+fi
+if [ -e $HOME/.zshrc ]; then
+	sudo mv $HOME/.zshrc $HOME/backup_dots/.zshrc
+	echo "found and moved .zshrc to backup_dots/"
+fi
+if [ -e $HOME/.vimrc ]; then
+	sudo mv $HOME/.vimrc $HOME/backup_dots/.vimrc
+	echo "found and moved .vimrc to backup_dots/"
+fi
+if [ -e $HOME/.tmux.conf ]; then
+	sudo mv $HOME/.tmux.conf $HOME/backup_dots/.tmux.conf
+	echo "found and moved .tmux.conf to backup_dots/"
+fi
+if [ -e $HOME/.config/nvim/init.vim ]; then
+	sudo mv $HOME/.config/nvim/init.vim $HOME/backup_dots/init.vim
+	echo "found and moved init.vim to backup_dots/"
+fi
+
+
 # find ~/ -maxdepth 1 -name .bashrc -exec rm {} \;
 # find ~/ -maxdepth 1 -name .zshrc -exec rm {} \;
 #find ~/ -maxdepth 1 -name .vimrc -exec rm {} \;
 #find ~/ -maxdepth 1 -name .tmux.conf -exec rm {} \;
 #find ~/.config/nvim/ -maxdepth 1 -name init.vim -exec rm {} \;
-#echo "update dotfiles[prev dotfiles removed]" >> ~/log.log
+echo "update dotfiles[prev dotfiles moved]" >> ~/log.log
 
-#sudo rm -r #HOME/Dotfiles
-#git clone --bare https://github.com/ainklain/dev_environment $HOME/Dotfiles
-#alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
-#dotfiles checkout
-#echo "update dotfiles done" >> ~/log.log
+sudo rm -r $HOME/Dotfiles
+git clone --bare https://github.com/ainklain/dev_environment $HOME/Dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/Dotfiles --work-tree=$HOME'
+sudo rm $HOME/README.md $HOME/LICENSE
+dotfiles checkout
+echo "update dotfiles done" >> ~/log.log
 
 echo "all done" >> ~/log.log
 
